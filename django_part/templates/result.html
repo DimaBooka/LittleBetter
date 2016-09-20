@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block client_autobahn %}
+
+{% endblock %}
+
+{% block content %}
+    {% if pic %}
+        <h3 style="padding-bottom: 25px">YOUR SEARCH RESULT</h3>
+
+        <div class="hovergallery">
+            {% for p in pic %}
+                <a rel="simplebox" href="{{ p.image_url }}">
+                <img class="shadow" width="180px" height="180px" style="object-fit: cover;" src="{{ p.image_url }}" alt="{{ p.spider }}"></a>
+            {% endfor %}
+        </div>
+
+        <div class="row centered mt grid">
+            <h3>That is all</h3>
+        </div>
+
+    {% else %}
+        <h3>hmm... try another phrase</h3>
+    {% endif %}
+{% endblock %}

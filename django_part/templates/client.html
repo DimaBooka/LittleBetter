@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block client_autobahn %}
+    <script type="text/javascript">
+       var socket = null;
+       var isopen = false;
+       var counter = 0;
+
+       window.onload = function() {
+          socket = new WebSocket("ws://127.0.0.1:9000");
+          socket.binaryType = "arraybuffer";
+
+          socket.onopen = function() {
+             console.log("Connected!");
+             isopen = true;
+             var q = $("h3.word");
+             socket.send(q.text());
+          };
+
+          socket.onmessage = function(e) {
+             if (typeof e.data == "string") {
+                console.log("Text message received: " + e.data);
+                counter = counter + 1;
+                if (counter > 2){
+                    var q = $("h3.word");
+                    var link = q.text().replace(' ', '_');
+                    for (var i = 0; i < q.text().length; i++ ){
+                        link = link.replace(' ', '_');
+                        console.log(link);
+                    }
+                    window.location.href = "http://127.0.0.1:8000/" + link + "/";
+                }
+
+             }
+          };
+
+          socket.onclose = function(e) {
+             console.log("Connection closed.");
+             socket = null;
+             isopen = false;
+          }
+       };
+
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h3 class="word" style="display: none;">{{ query }}</h3>
+    <h4>In process ....</h4>
+
+{% endblock %}
