@@ -1,0 +1,22 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+.two
+.env
+build
+*.pid
+*.pyc
+project.egg-info
+*.iml
+*.sh
+eggs
+redis-stable
+items
+logs
+dbs
+
+out
+gen

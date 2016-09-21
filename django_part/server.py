@@ -5,10 +5,11 @@ import asyncio
 import time
 import asyncio_redis
 import logging
+import hashlib
 
 
 logging.basicConfig(format=u'%(filename) 8s [LINE:%(lineno)d]# %(levelname)-3s [%(asctime)s] %(message)s',
-                    level=logging.DEBUG, filename=u'django_part/all_logs.log')
+                    level=logging.DEBUG, filename=u'all_logs.log')
 
 
 class MyServerProtocol(WebSocketServerProtocol):
@@ -34,7 +35,8 @@ class MyServerProtocol(WebSocketServerProtocol):
         if isBinary:
             print("Binary message received: {0} bytes".format(len(payload)))
         else:
-            print("Text message received: {0}".format(payload.decode('utf8')))
+            # print("Text message received: {0}".format(payload.decode('utf8')))
+            print("Text message received: {0}".format(hashlib.sha224(payload).hexdigest()))
 
             try:
                 # Create connection
@@ -44,7 +46,8 @@ class MyServerProtocol(WebSocketServerProtocol):
                 subscriber = yield from connection.start_subscribe()
 
                 # Subscribe to channel.
-                yield from subscriber.subscribe([str(payload.decode('utf8'))])
+                payload = hashlib.sha224(payload).hexdigest()
+                yield from subscriber.subscribe([payload])
 
                 # Inside a while loop, wait for incoming events.
                 spiders = list()
@@ -52,7 +55,7 @@ class MyServerProtocol(WebSocketServerProtocol):
                 while True:
                     reply = yield from subscriber.next_published()
                     print(reply.value)
-                    if reply.value.startswith(payload.decode('utf8')):
+                    if reply.value.startswith(payload):
                         spiders.append(reply.value)
                         self.sendMessage(reply.value.encode('utf-8'))
                     if len(spiders) > 2:

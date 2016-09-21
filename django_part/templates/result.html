@@ -11,7 +11,7 @@
         <div class="hovergallery">
             {% for p in pic %}
                 <a rel="simplebox" href="{{ p.image_url }}">
-                <img class="shadow" width="180px" height="180px" style="object-fit: cover;" src="{{ p.image_url }}" alt="{{ p.spider }}"></a>
+                <img class="shadow" width="180px" height="180px" style="object-fit: cover;" src="{{ p.url }}" alt="{{ p.spider }}"></a>
             {% endfor %}
         </div>
 

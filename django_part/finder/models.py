@@ -11,7 +11,7 @@ class Query(models.Model):
 
 class Result(models.Model):
     query = models.ForeignKey(Query, on_delete=models.CASCADE)
-    image_url = models.CharField(max_length=1500)
+    url = models.CharField(max_length=1500)
     spider = models.CharField(max_length=20)
     date = models.DateTimeField(auto_now_add=True, blank=True)
     rang = models.PositiveIntegerField()
