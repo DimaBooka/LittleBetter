@@ -5,8 +5,7 @@ import logging
 from.send_email import send_email as ALERT
 
 
-logging.basicConfig(format=u'%(filename) 3s [LINE:%(lineno)d]# %(levelname)-3s [%(asctime)s] %(message)s',
-                    level=logging.DEBUG, filename=u'all_logs.log')
+logger = logging.getLogger(__name__)
 
 
 class RunSpider:
@@ -31,25 +30,16 @@ class RunSpider:
         try:
             self.api = ScrapydAPI('http://0.0.0.0:6800')
             self.spiders = self.api.list_spiders('links_finder')
-            logging.info(u'Сonnected to Scrapyd.')
+            logger.info(u'Сonnected to Scrapyd.')
         except:
             ALERT()
-            logging.error(u"Could'not connect to Scrapyd.")
+            logger.error(u"Could'not connect to Scrapyd.")
             return HttpResponseRedirect('/')
 
         for spider in self.spiders:
             try:
                 self.api.schedule('links_finder', spider, query=self.query)
-                logging.info(u'Activated %s spider. ----- %s' % (spider, self.query))
+                logger.info(u'Activated %s spider. ----- %s' % (spider, self.query))
             except:
-                logging.warning(u"Could'not find %s spider." % spider)
+                logger.warning(u"Could'not find %s spider." % spider)
                 return HttpResponseRedirect('/')
-            # try:
-            #     r = redis.Redis(host='localhost', port=6379, db=0)
-            #     r.set("%s:%s" % (self.query, spider), 'create')
-            #     r.expire("%s:%s" % (self.query, spider), 60)
-            #     logging.info(u'Wrote to Redis.')
-            # except:
-            #     ALERT()
-            #     logging.error(u"Could'not connect to Redis.")
-            #     return HttpResponseRedirect('/')

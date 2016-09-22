@@ -9,7 +9,7 @@ import hashlib
 
 
 logging.basicConfig(format=u'%(filename) 8s [LINE:%(lineno)d]# %(levelname)-3s [%(asctime)s] %(message)s',
-                    level=logging.DEBUG, filename=u'all_logs.log')
+                    level=logging.DEBUG, filename=u'all_log.log')
 
 
 class MyServerProtocol(WebSocketServerProtocol):
@@ -39,29 +39,22 @@ class MyServerProtocol(WebSocketServerProtocol):
             print("Text message received: {0}".format(hashlib.sha224(payload).hexdigest()))
 
             try:
-                # Create connection
                 connection = yield from asyncio_redis.Connection.create(host='127.0.0.1', port=6379)
 
-                # Create subscriber.
                 subscriber = yield from connection.start_subscribe()
-
-                # Subscribe to channel.
                 payload = hashlib.sha224(payload).hexdigest()
                 yield from subscriber.subscribe([payload])
 
-                # Inside a while loop, wait for incoming events.
-                spiders = list()
-
+                spiders_done = list()
                 while True:
                     reply = yield from subscriber.next_published()
                     print(reply.value)
                     if reply.value.startswith(payload):
-                        spiders.append(reply.value)
+                        spiders_done.append(reply.value)
                         self.sendMessage(reply.value.encode('utf-8'))
-                    if len(spiders) > 2:
+                    if len(spiders_done) > 2:
                         break
 
-                # When finished, close the connection.
                 connection.close()
                 logging.info(u'Successes query to Redis.')
             except:

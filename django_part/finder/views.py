@@ -1,5 +1,6 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Query, Result
 from .forms import QueryForm
 from .scrapyd_file import RunSpider
@@ -7,8 +8,7 @@ import logging
 from.send_email import send_email as ALERT
 
 
-logging.basicConfig(format=u'%(filename) 8s [LINE:%(lineno)d]# %(levelname)-3s [%(asctime)s] %(message)s',
-                    level=logging.DEBUG, filename=u'all_logs.log')
+logger = logging.getLogger(__name__)
 
 
 def start(request):
@@ -35,18 +35,18 @@ def find(request):
         if form.is_valid():
             try:
                 query = request.POST.get('query')
-                logging.info(u'Entered query is OK.')
+                logger.info(u'Entered query is OK.')
             except:
                 ALERT()
-                logging.warning(u'Entered query is incorrect.')
-                return HttpResponseRedirect('/')
+                logger.warning(u'Entered query is incorrect.')
+                return render(request, 'client.html')
 
             if query.replace(' ', '_') in urls:
                 return HttpResponseRedirect('/' + query.replace(' ', '_') + '/')
             ret = RunSpider(query)
             response = ret.run()
             if isinstance(response, HttpResponseRedirect):
-                return response
+                return render(request, 'client.html')
             Query.objects.create(query=query, status='create')
     else:
         form = QueryForm()
@@ -63,12 +63,22 @@ def show(request, query):
     """
     form = QueryForm()
     try:
-        pic = Result.objects.filter(query__query=query.replace('_', ' '),
-                                    query__status='done').order_by('rang')
-        logging.info(u'Successfully processed request.')
+        pic = Result.objects.select_related('query').filter(query__query=query.replace('_', ' '),
+                                                            query__status='done').order_by('rang')
+        logger.info(u'Successfully processed request.')
     except:
         ALERT()
-        logging.error(u"Couldn't get data from sqlite.")
-        return HttpResponseRedirect('/')
+        logger.error(u"Couldn't get data from sqlite.")
+        return render(request, 'client.html')
+
+    paginator = Paginator(pic, 24)  # Show 25 contacts per page
+    page = request.GET.get('page')
+    try:
+        pic = paginator.page(page)
+    except PageNotAnInteger:
+        pic = paginator.page(1)
+    except EmptyPage:
+        pic = paginator.page(paginator.num_pages)
+
     links = Query.objects.filter(status='done').values_list('query', flat=True)
     return render(request, 'result.html', {'links': links, 'pic': pic, 'form': form})

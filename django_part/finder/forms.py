@@ -16,6 +16,6 @@ class QueryForm(forms.Form):
             'type': 'search',
             'class': 'form_style',
             'name': 'query',
-            'pattern': '^[A-Za-z0-9\s]+$',
+            'pattern': '^[А-Яа-яA-Za-z0-9\s]+$',
             'style': 'margin-left: 5px; width: 400px !important;'
         })

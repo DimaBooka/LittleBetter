@@ -10,14 +10,28 @@
 
         <div class="hovergallery">
             {% for p in pic %}
-                <a rel="simplebox" href="{{ p.image_url }}">
+                <a rel="simplebox" href="{{ p.url }}">
                 <img class="shadow" width="180px" height="180px" style="object-fit: cover;" src="{{ p.url }}" alt="{{ p.spider }}"></a>
             {% endfor %}
         </div>
 
-        <div class="row centered mt grid">
-            <h3>That is all</h3>
+        <div class="pagination">
+            <span class="step-links">
+                {% if pic.has_previous %}
+                    <h4><a href="?page={{ pic.previous_page_number }}">Previous</a></h4>
+                {% endif %}
+
+                {% if pic.has_next %}
+                    <h4><span class="current">
+                        Page {{ pic.number }} of {{ pic.paginator.num_pages }}
+                    </span></h4>
+                    <h4><a href="?page={{ pic.next_page_number }}">Next</a></h4>
+                {% else %}
+                    <h3>That is all.</h3>
+                {% endif %}
+            </span>
         </div>
+
 
     {% else %}
         <h3>hmm... try another phrase</h3>

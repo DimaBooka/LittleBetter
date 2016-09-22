@@ -21,7 +21,7 @@ class Result(models.Model):
 
     def __str__(self):
         return " {0} | {1} | {2} | {3} | {4} ".format(self.query,
-                                                      self.image_url,
+                                                      self.url,
                                                       self.spider,
                                                       self.date,
                                                       self.rang)
