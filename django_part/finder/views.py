@@ -28,6 +28,7 @@ def find(request):
     Gets a word-query and runs skrapyd or redirect on url which shows images.
 
     """
+    form = QueryForm()
     links = Query.objects.values_list('query', flat=True)
     urls = [q.replace(' ', '_') for q in links]
     if request.method == "POST":
@@ -39,17 +40,15 @@ def find(request):
             except:
                 ALERT()
                 logger.warning(u'Entered query is incorrect.')
-                return render(request, 'client.html')
+                return render(request, 'error.html', {'links': links, 'form': form})
 
             if query.replace(' ', '_') in urls:
                 return HttpResponseRedirect('/' + query.replace(' ', '_') + '/')
             ret = RunSpider(query)
             response = ret.run()
             if isinstance(response, HttpResponseRedirect):
-                return render(request, 'client.html')
+                return render(request, 'error.html', {'links': links, 'form': form})
             Query.objects.create(query=query, status='create')
-    else:
-        form = QueryForm()
     return render(request, 'client.html', {'links': links, 'form': form, 'query': query})
 
 
@@ -61,6 +60,7 @@ def show(request, query):
         query: query-word from client (position);
 
     """
+    links = Query.objects.filter(status='done').values_list('query', flat=True)
     form = QueryForm()
     try:
         pic = Result.objects.select_related('query').filter(query__query=query.replace('_', ' '),
@@ -69,7 +69,7 @@ def show(request, query):
     except:
         ALERT()
         logger.error(u"Couldn't get data from sqlite.")
-        return render(request, 'client.html')
+        return render(request, 'error.html', {'links': links, 'form': form})
 
     paginator = Paginator(pic, 24)  # Show 25 contacts per page
     page = request.GET.get('page')
@@ -80,5 +80,5 @@ def show(request, query):
     except EmptyPage:
         pic = paginator.page(paginator.num_pages)
 
-    links = Query.objects.filter(status='done').values_list('query', flat=True)
+
     return render(request, 'result.html', {'links': links, 'pic': pic, 'form': form})

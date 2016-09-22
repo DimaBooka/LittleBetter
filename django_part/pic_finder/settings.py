@@ -110,6 +110,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+EMAIL_HOST = 'smtp.rambler.ru'
+EMAIL_HOST_USER = 'LOGIN@rambler.ru'
+EMAIL_HOST_PASSWORD = 'PASSWORD'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -119,6 +125,11 @@ LOGGING = {
         },
     },
     'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',

@@ -260,11 +260,13 @@ body {
 }
 
 .create {
+	display: inline;
 	padding: 5px;
 	background: #c3ffd0 !important;
 }
 
 .done {
+	display: inline;
 	padding: 5px;
 	background: #83baff !important;
 }

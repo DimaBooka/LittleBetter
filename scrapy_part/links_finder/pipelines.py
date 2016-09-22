@@ -34,9 +34,10 @@ class LinksFinderPipeline(object):
 
         try:
             item['urls'][0]
-            spider.log(u'Links was found.')
+            spider.log(u'Links was found')
         except:
-            self.write_redis(item['query'][0], item['spider'][0], spider)
+            query = hashlib.sha224(item['query'][0].encode('utf-8')).hexdigest()
+            self.write_redis(query, item['spider'][0], spider)
             cur.close()
             con.close()
             spider.log(u"Links didn't found.")
@@ -52,7 +53,8 @@ class LinksFinderPipeline(object):
 
         cur.execute("UPDATE finder_query SET status='{0}' WHERE id={1}".format('done', query[0]))
         con.commit()
-        self.write_redis(item.get('query')[0], item['spider'][0], spider)
+        query = hashlib.sha224(item['query'][0]).hexdigest()
+        self.write_redis(query, item['spider'][0], spider)
         cur.close()
         con.close()
         spider.log(u'Successfully closed %s spider.' % item['spider'][0])
@@ -77,8 +79,8 @@ class LinksFinderPipeline(object):
 
         try:
             red = redis.StrictRedis(host='localhost', port=6379, db=0)
-            query = hashlib.sha224(query.encode('utf-8')).hexdigest()
+            spider.log(u'Query: %s' % query)
             red.publish(query, "%s:%s" % (query, spidy))
-            spider.log(u'Updated status for %s spider in Redis.' % spidy)
+            spider.log(u'Updated status for %s spider in Redis. %s' % (spidy, query))
         except:
             spider.log(u"Could'not connect to Redis.")

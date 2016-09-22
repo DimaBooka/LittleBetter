@@ -56,7 +56,7 @@ class MyServerProtocol(WebSocketServerProtocol):
                         break
 
                 connection.close()
-                logging.info(u'Successes query to Redis.')
+                logging.info(u'Successes query to Redis: %s' % payload)
             except:
                 logging.error(u"Could'not connect to Redis.")
 
