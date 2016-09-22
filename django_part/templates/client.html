@@ -21,7 +21,12 @@
              if (typeof e.data == "string") {
                 console.log("Text message received: " + e.data);
                 counter = counter + 1;
-
+                if (counter >= 1) {
+                    for (var i = 1; i <= counter; i++)  {
+                        var ProgressBar = document.getElementById("lamp" + i);
+                        ProgressBar.innerHTML = '<span class="done" ></span>';
+                    }
+                }
                 if (counter > 2){
                     setTimeout(function () {
                         var q = $("h3.word");
@@ -31,14 +36,9 @@
                             console.log(link);
                         }
                         window.location.href = "http://127.0.0.1:8000/" + link + "/";
-                    }, 1000);
+                    }, 300);
                 }
-                if (counter >= 1) {
-                    for (var i =1; i <= counter; i++)  {
-                        var ProgressBar = document.getElementById("lamp" + i);
-                        ProgressBar.innerHTML = '<span class="done" ></span>';
-                    }
-                }
+
              }
           };
 
@@ -56,8 +56,10 @@
 
     <h3 class="word" style="display: none;">{{ query }}</h3>
     <h4>In process ....</h4>
-    <div id="lamp1"><span class="create"></span></div>
-    <div id="lamp2"><span class="create"></span></div>
-    <div id="lamp3"><span class="create"></span></div>
+    <div id="super_wraper">
+        <div id="lamp1"><span class="create"></span></div>
+        <div id="lamp2"><span class="create"></span></div>
+        <div id="lamp3"><span class="create"></span></div>
+    </div>
 
 {% endblock %}

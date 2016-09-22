@@ -46,8 +46,8 @@ class LinksFinderPipeline(object):
         i = 0
         for url in item.get('urls'):
             i += 1
-            sql = "INSERT INTO finder_result (query_id, url, spider, rang, date) " \
-                  "VALUES ({0},'{1}','{2}',{3}, CURRENT_TIMESTAMP)".format(query[0], url, item['spider'][0], i)
+            sql = """INSERT INTO finder_result (query_id, url, spider, rang, date)
+                  VALUES ({0},'{1}','{2}',{3}, CURRENT_TIMESTAMP)""".format(query[0], url, item['spider'][0], i)
             cur.execute(sql)
             con.commit()
 

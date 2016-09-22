@@ -259,23 +259,29 @@ body {
   height: 80px;
 }
 
+#super_wraper{
+	margin: auto;
+    width: 300px;
+	background: #c3ffd0 !important;
+}
+
 .create {
-	display: inline;
+	width: 100px;
+	float: left;
+	display: inline-table !important;
 	padding: 5px;
 	background: #c3ffd0 !important;
 }
 
 .done {
-	display: inline;
+	width: 100px;
+	float: left;
+	display: inline-table !important;
 	padding: 5px;
 	background: #83baff !important;
 }
-
 
 .shadow {
 	box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
 	margin: 5px 3px;
 }
-
-
-
