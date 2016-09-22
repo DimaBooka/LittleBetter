@@ -36,7 +36,7 @@ class LinksFinderPipeline(object):
             item['urls'][0]
             spider.log(u'Links was found')
         except:
-            query = hashlib.sha224(item['query'][0].encode('utf-8')).hexdigest()
+            query = hashlib.sha224(item['query'][0]).hexdigest()
             self.write_redis(query, item['spider'][0], spider)
             cur.close()
             con.close()
