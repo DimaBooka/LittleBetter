@@ -5,9 +5,11 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-import psycopg2
+
 import redis
 import hashlib
+import sqlalchemy
+from sqlalchemy import select, update, func
 
 
 class LinksFinderPipeline(object):
@@ -22,15 +24,16 @@ class LinksFinderPipeline(object):
         :return: an iterable of Item objects dicts.
         """
         try:
-            con = psycopg2.connect("dbname='scraper' user='postgres' host='localhost' password='tunnel'")
-            cur = con.cursor()
-            spider.log(u'Successfully connected to postgres.')
+            con, meta = self.connect('postgres', 'tunnel', 'scraper')
+            spider.log(u'Successfully connected sqlalchemy to postgres.')
         except:
-            spider.log(u"Couldn't connect to postgres.")
+            spider.log(u"Couldn't connect sqlalchemy to postgres.")
             return item
 
-        query = cur.execute("SELECT id FROM finder_query WHERE query='{0}'".format(item['query'][0]))
-        query = cur.fetchone()
+        queries = meta.tables['finder_query']
+        query = queries.select().where(queries.c.query == item['query'][0])
+        for q in con.execute(query):
+            query = q
 
         try:
             item['urls'][0]
@@ -38,27 +41,35 @@ class LinksFinderPipeline(object):
         except:
             query = hashlib.sha224(item['query'][0]).hexdigest()
             self.write_redis(query, item['spider'][0], spider)
-            cur.close()
-            con.close()
             spider.log(u"Links didn't found.")
             return item
 
         i = 0
         for url in item.get('urls'):
             i += 1
-            sql = """INSERT INTO finder_result (query_id, url, spider, rang, date)
-                  VALUES ({0},'{1}','{2}',{3}, CURRENT_TIMESTAMP)""".format(query[0], url, item['spider'][0], i)
-            cur.execute(sql)
-            con.commit()
+            result = meta.tables['finder_result'].insert().values(query_id=query[0], url=url,
+                                                                  spider=item['spider'][0],
+                                                                  rang=i, date=func.now())
+            con.execute(result)
 
-        cur.execute("UPDATE finder_query SET status='{0}' WHERE id={1}".format('done', query[0]))
-        con.commit()
+        update_status = queries.update().where(meta.tables['finder_query'].c.id == query[0]).values(status='done')
+        con.execute(update_status)
+
         query = hashlib.sha224(item['query'][0]).hexdigest()
         self.write_redis(query, item['spider'][0], spider)
-        cur.close()
-        con.close()
         spider.log(u'Successfully closed %s spider.' % item['spider'][0])
         return item
+
+    def connect(self, user, password, db, host='localhost', port=5432):
+        '''
+        Returns a connection and a metadata object
+        '''
+        url = 'postgresql://{}:{}@{}:{}/{}'
+        url = url.format(user, password, host, port, db)
+        con = sqlalchemy.create_engine(url, client_encoding='utf8')
+        meta = sqlalchemy.MetaData(bind=con, reflect=True)
+
+        return con, meta
 
     def write_redis(self, query, spidy, spider):
         """
@@ -69,14 +80,6 @@ class LinksFinderPipeline(object):
             spidy: name of spiders which is writing now;
             spider: object-spider(just for logging);
         """
-        # try:
-        #     r = redis.Redis(host='localhost', port=6379, db=0)
-        #     r.set("%s:%s" % (query, spidy), 'done')
-        #     r.expire("%s:%s" % (query, spidy), 30)
-        #     spider.log(u'Updated status for %s spider in Redis.' % spidy)
-        # except:
-        #     spider.log(u"Could'not connect to Redis.")
-
         try:
             red = redis.StrictRedis(host='localhost', port=6379, db=0)
             spider.log(u'Query: %s' % query)

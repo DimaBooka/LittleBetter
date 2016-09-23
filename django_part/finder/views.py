@@ -80,5 +80,4 @@ def show(request, query):
     except EmptyPage:
         pic = paginator.page(paginator.num_pages)
 
-
     return render(request, 'result.html', {'links': links, 'pic': pic, 'form': form})
