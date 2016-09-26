@@ -4,7 +4,7 @@
     <script>
         window.onload = function() {
             var imgs = img_find();
-            console.log(imgs);
+
             function img_find() {
                 var imgs = document.getElementsByTagName("img");
                 var imgSrcs = [];
@@ -34,7 +34,7 @@
         <div class="hovergallery">
             {% for p in pic %}
                 <a rel="simplebox" href="{{ p.url }}">
-                <img class="shadow" width="50%" style="object-fit: cover; width:180px; height:180px;" src="{{ p.url }}" alt="{{ p.spider }}"></a>
+                <img class="shadow" width="50%" style="object-fit: cover; width:180px; height:180px;" src="{{ p.url }}" alt="{{ p.spider }} {{ p.rang }}"></a>
             {% endfor %}
         </div>
 
@@ -54,7 +54,6 @@
                 {% endif %}
             </span>
         </div>
-
 
     {% else %}
         <h3>hmm... try another phrase</h3>

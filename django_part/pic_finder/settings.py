@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
+SCRAPYD_API = 'http://0.0.0.0:6800'
+SCRAPY_APP = 'links_finder'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -107,12 +110,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAdminUser', ],
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 50,
 }
 
 EMAIL_HOST = 'smtp.rambler.ru'
-EMAIL_HOST_USER = 'LOGIN@rambler.ru'
-EMAIL_HOST_PASSWORD = 'PASSWORD'
+EMAIL_HOST_USER = 'dimazarj2009@rambler.ru'
+EMAIL_HOST_PASSWORD = 'samsung789'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

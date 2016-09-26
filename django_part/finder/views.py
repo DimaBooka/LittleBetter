@@ -3,9 +3,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Query, Result
 from .forms import QueryForm
-from .scrapyd_file import RunSpider
+from .errors import RunSpiderError
 import logging
-from.send_email import send_email as ALERT
+from .send_email import send_email as ALERT
 
 
 logger = logging.getLogger(__name__)
@@ -18,8 +18,7 @@ def start(request):
 
     """
     form = QueryForm()
-    links = Query.objects.filter(status='done').values_list('query', flat=True)
-    return render(request, 'base.html', {'links': links, 'form': form})
+    return render(request, 'base.html', {'form': form})
 
 
 def find(request):
@@ -28,28 +27,22 @@ def find(request):
     Gets a word-query and runs skrapyd or redirect on url which shows images.
 
     """
-    form = QueryForm()
-    links = Query.objects.values_list('query', flat=True)
-    urls = [q.replace(' ', '_') for q in links]
+    links = Query.objects.filter(status='done').values_list('query', flat=True)
     if request.method == "POST":
         form = QueryForm(request.POST)
         if form.is_valid():
-            try:
-                query = request.POST.get('query')
-                logger.info(u'Entered query is OK.')
-            except:
-                ALERT()
-                logger.warning(u'Entered query is incorrect.')
-                return render(request, 'error.html', {'links': links, 'form': form})
+            query = request.POST.get('query')
+            logger.info(u'Entered query is OK.')
 
-            if query.replace(' ', '_') in urls:
+            if query in links:
                 return HttpResponseRedirect('/' + query.replace(' ', '_') + '/')
-            ret = RunSpider(query)
-            response = ret.run()
-            if isinstance(response, HttpResponseRedirect):
-                return render(request, 'error.html', {'links': links, 'form': form})
-            Query.objects.create(query=query, status='create')
-    return render(request, 'client.html', {'links': links, 'form': form, 'query': query})
+
+            try:
+                new_query = Query(query=query, status='create')
+                new_query.save()
+            except RunSpiderError:
+                return render(request, 'error.html', {'form': form})
+        return render(request, 'client.html', {'form': form, 'query': query})
 
 
 def show(request, query):
@@ -60,18 +53,17 @@ def show(request, query):
         query: query-word from client (position);
 
     """
-    links = Query.objects.filter(status='done').values_list('query', flat=True)
     form = QueryForm()
     try:
         pic = Result.objects.select_related('query').filter(query__query=query.replace('_', ' '),
                                                             query__status='done').order_by('rang')
         logger.info(u'Successfully processed request.')
-    except:
+    except ConnectionRefusedError:
         ALERT()
-        logger.error(u"Couldn't get data from sqlite.")
-        return render(request, 'error.html', {'links': links, 'form': form})
+        logger.error(u"Couldn't get data from postgresql.")
+        return render(request, 'error.html', {'form': form})
 
-    paginator = Paginator(pic, 24)  # Show 25 contacts per page
+    paginator = Paginator(pic, 24)  # Show 24 contacts per page
     page = request.GET.get('page')
     try:
         pic = paginator.page(page)
@@ -80,4 +72,4 @@ def show(request, query):
     except EmptyPage:
         pic = paginator.page(paginator.num_pages)
 
-    return render(request, 'result.html', {'links': links, 'pic': pic, 'form': form})
+    return render(request, 'result.html', {'pic': pic, 'form': form})

@@ -40,7 +40,6 @@ class MyServerProtocol(WebSocketServerProtocol):
 
             try:
                 connection = yield from asyncio_redis.Connection.create(host='127.0.0.1', port=6379)
-
                 subscriber = yield from connection.start_subscribe()
                 payload = hashlib.sha224(payload).hexdigest()
                 yield from subscriber.subscribe([payload])
@@ -55,7 +54,6 @@ class MyServerProtocol(WebSocketServerProtocol):
                     if len(spiders_done) > 2:
                         break
 
-                connection.close()
                 logging.info(u'Successes query to Redis: %s' % payload)
             except:
                 logging.error(u"Could'not connect to Redis.")
