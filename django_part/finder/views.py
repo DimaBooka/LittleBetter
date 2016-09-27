@@ -11,6 +11,10 @@ from .send_email import send_email as ALERT
 logger = logging.getLogger(__name__)
 
 
+def test(request):
+    return render(request, 'index.html')
+
+
 def start(request):
     """
 

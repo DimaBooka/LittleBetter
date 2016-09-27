@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="finderApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="/static/js/lib/angular.min.js"></script>
+    <script src="/static/js/lib/angular-route.min.js"></script>
+    <script src="/static/js/lib/angular-resource.min.js"></script>
+    <script src="/static/js/app.module.js"></script>
+    <script src="/static/js/app.config.js"></script>
+    <script src="/static/js/links-list/links-list.component.js"></script>
+    <script src="/static/js/link-detail/link-detail.component.js"></script>
+    <script src="/static/js/services/services.module.js"></script>
+    <script src="/static/js/services/LinkService/DataService.js"></script>
+
+
+</head>
+{% verbatim %}
+<body>
+
+     <div ng-view></div>
+
+</body>
+{% endverbatim %}
+</html>

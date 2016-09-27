@@ -1,0 +1,10 @@
+   Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="status">status</option>
+          <option value="query">query</option>
+        </select>
+<span>{{$ctrl.links}}</span>
+  <p ng-repeat="link in $ctrl.links.results | orderBy: $ctrl.orderProp">
+    <a href="#!/query/{{link.query}}"><span>{{link.query}}</span></a>
+    <span>{{link.status}}</span>
+  </p>
