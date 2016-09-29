@@ -1,16 +1,22 @@
-from rest_framework import permissions
-from rest_framework import viewsets
-from .serializers import QuerySerializer, ResultSerializer
+from rest_framework import permissions, viewsets
+from rest_framework.permissions import AllowAny
+from django.contrib.auth.models import User
+from .serializers import QuerySerializer, ResultSerializer  # , UserSerializer
 from finder.models import Query, Result
 from rest_framework.filters import DjangoFilterBackend, OrderingFilter
 from .filters import ResultFilter, QueryFilter
 
+#
+# class UserView(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = QuerySerializer
+#
 
 class QueryViewSet(viewsets.ModelViewSet):
 
     queryset = Query.objects.all()
     serializer_class = QuerySerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.AllowAny,)
     filter_backends = (DjangoFilterBackend, OrderingFilter)
     filter_class = QueryFilter
     ordering = 'query'

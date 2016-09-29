@@ -1,0 +1,22 @@
+{
+  "name": "bower",
+  "homepage": "https://github.com/DimaBooka/LittleBetter",
+  "authors": [
+    "DimaBooka <atlasb777@gmail.com.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-paging": "^2.2.2",
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}

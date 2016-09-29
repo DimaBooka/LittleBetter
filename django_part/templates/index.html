@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <script src="/static/js/lib/angular.min.js"></script>
-    <script src="/static/js/lib/angular-route.min.js"></script>
-    <script src="/static/js/lib/angular-resource.min.js"></script>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/static/js/bower_components/angular/angular.min.js"></script>
+    <script src="/static/js/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/static/js/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/static/js/app.module.js"></script>
     <script src="/static/js/app.config.js"></script>
     <script src="/static/js/links-list/links-list.component.js"></script>
@@ -15,13 +18,57 @@
     <script src="/static/js/services/services.module.js"></script>
     <script src="/static/js/services/LinkService/DataService.js"></script>
 
+    <link href="/static/simplebox/simplebox.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/simplebox/simplebox.js"></script>
+    <script type="text/javascript" src="/static/simplebox/simplebox_util.js"></script>
+    <script type="text/javascript" src="/static/simplebox/simple.js"></script>
 
 </head>
-{% verbatim %}
+
 <body>
+   <div class="wrapper">
+     <div class="content">
+       <div class="navbar navbar-default navbar-fixed-top" style="background-color: #74cfae;">
+         <div class="navbar-header" style="margin-left: 10px;">
+           {% load static %}
+           <a href="/"><img src="/static/logo.png" alt="" style="width: 50px; height: 50px;"></a>
+         </div>
 
-     <div ng-view></div>
+         <div ng-controller="MakeQueryCtrl">
+           <form action="">
+             {{form}}
+             <button class="button form_style" ng-click="getlog()">Search</button>
+           </form>
+{% verbatim %}
+           <div ng-if="checked">
+             <div class="container">
+               <div class="row centered mt grid">
+                 <h4 class="respan">In process ....</h4>
+                 <div id="super_wraper">
+                   <div id="lamp1"><span class="create"></span></div>
+                   <div id="lamp2"><span class="create"></span></div>
+                   <div id="lamp3"><span class="create"></span></div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
 
-</body>
+       <div ng-view></div>
+
+       <div class="footer">
+         <div id="f">
+           <div class="container">
+             <div class="row">
+               <p>Booka Booka</p>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
 {% endverbatim %}
+</body>
+
 </html>

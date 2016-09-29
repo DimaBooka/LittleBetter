@@ -1,6 +1,6 @@
 angular.
-  module('finderApp').
-  config(['$locationProvider' ,'$routeProvider',
+  module('finderApp')
+    .config(['$locationProvider' ,'$routeProvider',
     function config($locationProvider, $routeProvider) {
       $locationProvider.hashPrefix('!');
 
@@ -9,7 +9,7 @@ angular.
           template: '<links-list></links-list>'
         }).
         when('/query/:linkQuery', {
-          template: '<link-detail></link-detail>'
+          template: '<link-detail></link-detail><links-list></links-list>'
         }).
         otherwise('/query');
     }

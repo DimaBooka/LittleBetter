@@ -8,8 +8,7 @@ import logging
 import hashlib
 
 
-logging.basicConfig(format=u'%(filename) 8s [LINE:%(lineno)d]# %(levelname)-3s [%(asctime)s] %(message)s',
-                    level=logging.DEBUG, filename=u'all_log.log')
+logger = logging.getLogger(__name__)
 
 
 class MyServerProtocol(WebSocketServerProtocol):

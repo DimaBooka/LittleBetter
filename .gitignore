@@ -17,6 +17,6 @@ redis-stable
 items
 logs
 dbs
-
+bower_components
 out
 gen

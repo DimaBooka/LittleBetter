@@ -13,6 +13,8 @@ class QueryForm(forms.Form):
         super(QueryForm, self).__init__(*args, **kwargs)
         self.fields['query'].widget = forms.TextInput(attrs={
             'placeholder': 'write here',
+            'ng-model': 'query',
+            'required': '',
             'type': 'search',
             'class': 'form_style',
             'name': 'query',

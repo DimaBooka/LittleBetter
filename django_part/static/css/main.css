@@ -42,6 +42,7 @@ p {
 
 .centered {
     text-align: center;
+	max-width: 100%;
 }
 
 .mt {
@@ -204,8 +205,9 @@ a:after {
 /* Footer */
 #f {
 	width: 100%;
+	min-height: 96px;
 	padding-top: 30px;
-	background-color: #74cfae;
+	background-color: #5fb483;
 }
 
 #f p {
@@ -227,10 +229,12 @@ a:after {
 }
 
 .form_style {
+
+  min-width: 100px;
   margin: 0 auto;
   background-color: #f6f7f8;
   padding: 14px;
-  font-size: 14px;
+  font-size: 18px;
   color: #838383;
   outline: 0 !important;
   border: 1px solid #b5c1c9;
@@ -241,7 +245,7 @@ a:after {
   padding: 0;
 }
 html,
-body {
+body{
   height: 95.5%;
 }
 .wrapper {
@@ -284,4 +288,12 @@ body {
 .shadow {
 	box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
 	margin: 5px 3px;
+}
+
+#pagination {
+	margin: 20px 30px;
+}
+
+.respan{
+	margin: 15px 63px;
 }

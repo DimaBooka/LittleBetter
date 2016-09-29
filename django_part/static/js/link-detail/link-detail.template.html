@@ -1,5 +1,23 @@
-  <p ng-repeat="link in $ctrl.links.results">
-    <span>{{link.url}}</span>
-    <span>{{link.rang}}</span>
-    <span>{{link.spider}}</span>
-  </p>
+<div id="social">
+  <div class="row centered">
+    <div class="col-lg-10 col-lg-offset-1" >
+      <h3 style="padding: 20px">SEARCH RESULT</h3>
+      <div id="content">
+
+        <div class="hovergallery">
+          <span ng-repeat="item in items | startFrom: startingItem() | limitTo: itemsPerPage">
+            <a rel="simplebox" href="{{ item.url }}">
+            <img class="shadow" width="30%" style="object-fit: cover; width:180px; height:180px;" src="{{ item.url }}" alt="{{ item.spider }} {{ item.rang }}"></a>
+          </span>
+        </div>
+
+        <div id="pagination" class="row">
+          <button class="button form_style" ng-disabled="firstPage()" ng-click="pageBack()">Previous</button>
+          <span class="respan">{{currentPage+1}} of {{numberOfPages()}}</span>
+          <button class="button form_style" ng-disabled="lastPage()" ng-click="pageForward()">Next</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

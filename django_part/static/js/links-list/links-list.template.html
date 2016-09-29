@@ -1,10 +1,16 @@
-   Sort by:
-        <select ng-model="$ctrl.orderProp">
-          <option value="status">status</option>
-          <option value="query">query</option>
-        </select>
-<span>{{$ctrl.links}}</span>
-  <p ng-repeat="link in $ctrl.links.results | orderBy: $ctrl.orderProp">
-    <a href="#!/query/{{link.query}}"><span>{{link.query}}</span></a>
-    <span>{{link.status}}</span>
-  </p>
+<div id="social">
+ <div class="row centered">
+   <div class="col-lg-10 col-lg-offset-1">
+
+     <h3 style="margin-top: 40px">LATEST SEARCHES</h3>
+     <span ng-repeat="link in $ctrl.links | filter:$ctrl.query">
+       <a href="#!/query/{{link.query}}" style="color: #4e4e4e">
+         <div class="col-md-3">
+           <h4>{{ link.query }}</h4>
+         </div>
+       </a>
+     </span>
+
+   </div>
+ </div>
+</div>
