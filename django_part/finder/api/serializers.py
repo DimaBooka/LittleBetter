@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = User
         fields = ('password', 'username',)
@@ -11,6 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class QuerySerializer(serializers.ModelSerializer):
+    author = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Query

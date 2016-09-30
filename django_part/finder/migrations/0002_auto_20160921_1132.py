@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='result',
             old_name='image_url',
-            new_name='url',
-        ),
+            new_name='url'
+        )
     ]

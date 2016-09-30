@@ -1,0 +1,244 @@
+utils.py [LINE:90]# DEBUG [2016-09-30 17:15:51,271] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+utils.py [LINE:90]# DEBUG [2016-09-30 17:15:51,278] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+utils.py [LINE:90]# DEBUG [2016-09-30 17:16:45,879] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+utils.py [LINE:90]# DEBUG [2016-09-30 17:16:45,886] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+utils.py [LINE:90]# DEBUG [2016-09-30 17:28:49,890] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+utils.py [LINE:90]# DEBUG [2016-09-30 17:28:49,896] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:45,262] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:45.251184+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 45, 251184, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:45,270] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,355] "GET / HTTP/1.1" 200 2842
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,439] "GET /static/css/font-awesome.min.css HTTP/1.1" 200 18079
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,441] "GET /static/css/bootstrap.css HTTP/1.1" 200 126423
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,442] "GET /static/css/main.css HTTP/1.1" 200 4594
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,468] "GET /static/js/bower_components/angular/angular.min.js HTTP/1.1" 200 160048
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,471] "GET /static/js/bower_components/angular-route/angular-route.min.js HTTP/1.1" 200 4766
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,485] "GET /static/js/bower_components/angular-resource/angular-resource.min.js HTTP/1.1" 200 4510
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,507] "GET /static/js/app.module.js HTTP/1.1" 200 75
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,532] "GET /static/js/app.config.js HTTP/1.1" 200 577
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,535] "GET /static/js/MakeQueryController.js HTTP/1.1" 200 2826
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,543] "GET /static/js/links-list/links-list.component.js HTTP/1.1" 200 285
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,557] "GET /static/js/link-detail/filter.js HTTP/1.1" 200 209
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,600] "GET /static/js/link-detail/link-detail.component.js HTTP/1.1" 200 1209
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,610] "GET /static/js/services/services.module.js HTTP/1.1" 200 93
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,614] "GET /static/js/services/LinkService/DataService.js HTTP/1.1" 200 650
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,708] "GET /static/logo.png HTTP/1.1" 200 95548
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,857] "GET /static/js/links-list/links-list.template.html HTTP/1.1" 200 409
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,925] "GET /static/js/bower_components/angular/angular.min.js.map HTTP/1.1" 200 430959
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,928] "GET /static/js/bower_components/angular-route/angular-route.min.js.map HTTP/1.1" 200 12216
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:45,933] "GET /static/js/bower_components/angular-resource/angular-resource.min.js.map HTTP/1.1" 200 11015
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:45,966] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:45.951829+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 45, 951829, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:45,976] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:46,096] (0.019) SELECT "finder_query"."id", "finder_query"."query", "finder_query"."status", "finder_query"."author_id" FROM "finder_query" WHERE ("finder_query"."author_id" = 2 AND "finder_query"."status" = 'done') ORDER BY "finder_query"."query" ASC; args=(2, 'done')
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:46,121] "GET /api/query/?status=done HTTP/1.1" 200 170
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:46,149] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:46.126464+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 46, 126464, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:46,157] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:46,160] "GET /favicon.ico HTTP/1.1" 200 2842
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,236] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:48.226255+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 48, 226255, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,251] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,264] (0.001) SELECT "finder_query"."id", "finder_query"."query", "finder_query"."status", "finder_query"."author_id" FROM "finder_query" WHERE ("finder_query"."author_id" = 2 AND "finder_query"."status" = 'done') ORDER BY "finder_query"."query" ASC; args=(2, 'done')
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:48,271] "GET /api/query/?status=done HTTP/1.1" 200 170
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,350] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:48.330626+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 48, 330626, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,357] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+exception.py [LINE:124]# ERROR [2016-09-30 17:29:48,401] Internal Server Error: /api/query/
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/viewsets.py", line 87, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/views.py", line 474, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/views.py", line 434, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/views.py", line 471, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/mixins.py", line 20, in create
+    serializer.is_valid(raise_exception=True)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/serializers.py", line 214, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/serializers.py", line 408, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/serializers.py", line 438, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/fields.py", line 485, in run_validation
+    (is_empty_value, data) = self.validate_empty_values(data)
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/fields.py", line 466, in validate_empty_values
+    return (True, self.get_default())
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/rest_framework/fields.py", line 443, in get_default
+    self.default.set_context(self)
+TypeError: set_context() missing 1 required positional argument: 'serializer_field'
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,445] (0.012) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:48.412623+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 48, 412623, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+ base.py [LINE:929]# DEBUG [2016-09-30 17:29:48,467] Exception while resolving variable 'name' in template 'rest_framework/login.html'.
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '[{\'True\': True, \'None\': None, \'False\': False}, {\'perms\': <django.contrib.auth.context_processors.PermWrapper object at 0x7f98e4cb09e8>, \'csrf_token\': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f98e673ca60>>, \'DEFAULT_MESSAGE_LEVELS\': {\'ERROR\': 40, \'SUCCESS\': 25, \'WARNING\': 30, \'INFO\': 20, \'DEBUG\': 10}, \'user\': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f98e673cb70>>, \'request\': <WSGIRequest: POST \'/api/api-auth/login/\'>, \'messages\': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f98e4cc8908>}, {}, {\'next\': \'\', \'site_name\': \'127.0.0.1:8000\', \'site\': <django.contrib.sites.requests.RequestSite object at 0x7f98fb6ceef0>, \'form\': <AuthenticationForm bound=True, valid=False, fields=(username;password)>}, {\'block\': <Block Node: head. Contents: [<TextNode: \'\\n\\n      \'>, <Block Node: meta. Contents: [<TextNode: \'\\n        <meta http-equiv\'>]>, <TextNode: \'\\n\\n      <title>\'>, <Block Node: title. Contents: [<IfNode>, <TextNode: \'Django REST framework\'>]>, <TextNode: \'</title>\\n\\n      \'>, <Block Node: style. Contents: [<TextNode: \'\\n        \'>, <Block Node: bootstrap_theme. Contents: [<TextNode: \'\\n          <link rel="sty\'>, <django.templatetags.static.StaticNode object at 0x7f98e4c72588>, <TextNode: \'"/>\\n          <link rel="\'>, <django.templatetags.static.StaticNode object at 0x7f98e4c72630>, <TextNode: \'"/>\\n        \'>]>, <TextNode: \'\\n\\n        <link rel="styl\'>, <django.templatetags.static.StaticNode object at 0x7f98e4c726a0>, <TextNode: \'"/>\\n        <link rel="st\'>, <django.templatetags.static.StaticNode object at 0x7f98e4c72748>, <TextNode: \'"/>\\n      \'>]>, <TextNode: \'\\n\\n    \'>]>}, {\'block\': <Block Node: title. Contents: [<IfNode>, <TextNode: \'Django REST framework\'>]>}]'
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,470] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:48.454586+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 48, 454586, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,489] (0.006) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,549] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,556] (0.002) SELECT "finder_query"."id", "finder_query"."query", "finder_query"."status", "finder_query"."author_id" FROM "finder_query" WHERE ("finder_query"."author_id" = 2 AND "finder_query"."status" = 'done') ORDER BY "finder_query"."query" ASC; args=(2, 'done')
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:48,561] "GET /favicon.ico HTTP/1.1" 200 2842
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:48,594] "GET /api/query/?status=done HTTP/1.1" 200 170
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:48,682] "POST /api/api-auth/login/ HTTP/1.1" 200 2973
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,712] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:48.665439+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 48, 665439, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,722] (0.006) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:48,750] "GET /favicon.ico HTTP/1.1" 200 2842
+basehttp.py [LINE:131]# ERROR [2016-09-30 17:29:48,767] "POST /api/query/ HTTP/1.1" 500 19029
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,788] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2016-09-30T14:29:48.782331+00:00'::timestamptz AND "django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz'); args=(datetime.datetime(2016, 9, 30, 14, 29, 48, 782331, tzinfo=<UTC>), 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz')
+utils.py [LINE:90]# DEBUG [2016-09-30 17:29:48,807] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:29:48,812] "GET /favicon.ico HTTP/1.1" 200 2842
+utils.py [LINE:90]# DEBUG [2016-09-30 17:30:44,813] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+utils.py [LINE:90]# DEBUG [2016-09-30 17:30:44,819] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:51,216] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:51,223] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:52,832] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:31:52.817657+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 31, 52, 817657, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:52,839] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:52,930] "GET / HTTP/1.1" 200 2842
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:52,979] "GET /static/css/bootstrap.css HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:52,981] "GET /static/css/main.css HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:52,992] "GET /static/css/font-awesome.min.css HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,002] "GET /static/js/bower_components/angular/angular.min.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,040] "GET /static/js/bower_components/angular-route/angular-route.min.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,045] "GET /static/js/bower_components/angular-resource/angular-resource.min.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,055] "GET /static/js/app.module.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,062] "GET /static/js/app.config.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,068] "GET /static/js/MakeQueryController.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,080] "GET /static/js/links-list/links-list.component.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,091] "GET /static/js/link-detail/filter.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,128] "GET /static/js/link-detail/link-detail.component.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,133] "GET /static/js/services/services.module.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,146] "GET /static/js/services/LinkService/DataService.js HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,230] "GET /static/logo.png HTTP/1.1" 304 0
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,387] "GET /static/js/links-list/links-list.template.html HTTP/1.1" 304 0
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:53,536] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:31:53.520462+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 31, 53, 520462, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:53,555] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:53,576] (0.001) SELECT "finder_query"."id", "finder_query"."query", "finder_query"."status", "finder_query"."author_id" FROM "finder_query" WHERE ("finder_query"."author_id" = 2 AND "finder_query"."status" = 'done') ORDER BY "finder_query"."query" ASC; args=(2, 'done')
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,583] "GET /api/query/?status=done HTTP/1.1" 200 170
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:53,585] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:31:53.568258+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 31, 53, 568258, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:31:53,590] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:31:53,593] "GET /favicon.ico HTTP/1.1" 200 2842
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:01,986] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:32:01.975753+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 32, 1, 975753, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:01,995] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,012] (0.001) SELECT "finder_query"."id", "finder_query"."query", "finder_query"."status", "finder_query"."author_id" FROM "finder_query" WHERE ("finder_query"."author_id" = 2 AND "finder_query"."status" = 'done') ORDER BY "finder_query"."query" ASC; args=(2, 'done')
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:02,019] "GET /api/query/?status=done HTTP/1.1" 200 170
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,116] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:32:02.073703+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 32, 2, 73703, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,135] (0.014) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,170] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:32:02.138594+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 32, 2, 138594, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,186] (0.016) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:32:02.161667+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 32, 2, 161667, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,190] (0.016) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,196] (0.006) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,200] (0.020) SELECT (1) AS "a" FROM "finder_query" WHERE "finder_query"."query" = 'ftjftj' LIMIT 1; args=('ftjftj',)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,242] (0.021) SELECT "finder_query"."id", "finder_query"."query", "finder_query"."status", "finder_query"."author_id" FROM "finder_query" WHERE ("finder_query"."author_id" = 2 AND "finder_query"."status" = 'done') ORDER BY "finder_query"."query" ASC; args=(2, 'done')
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:02,252] "GET /favicon.ico HTTP/1.1" 200 2842
+ base.py [LINE:929]# DEBUG [2016-09-30 17:32:02,264] Exception while resolving variable 'name' in template 'rest_framework/login.html'.
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '[{\'False\': False, \'True\': True, \'None\': None}, {\'perms\': <django.contrib.auth.context_processors.PermWrapper object at 0x7f5c39901c50>, \'csrf_token\': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f5c3ab71620>>, \'user\': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f5c3b598620>>, \'messages\': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f5c398e70f0>, \'request\': <WSGIRequest: POST \'/api/api-auth/login/\'>, \'DEFAULT_MESSAGE_LEVELS\': {\'DEBUG\': 10, \'WARNING\': 30, \'ERROR\': 40, \'INFO\': 20, \'SUCCESS\': 25}}, {}, {\'form\': <AuthenticationForm bound=True, valid=False, fields=(username;password)>, \'next\': \'\', \'site\': <django.contrib.sites.requests.RequestSite object at 0x7f5c4fb0eef0>, \'site_name\': \'127.0.0.1:8000\'}, {\'block\': <Block Node: head. Contents: [<TextNode: \'\\n\\n      \'>, <Block Node: meta. Contents: [<TextNode: \'\\n        <meta http-equiv\'>]>, <TextNode: \'\\n\\n      <title>\'>, <Block Node: title. Contents: [<IfNode>, <TextNode: \'Django REST framework\'>]>, <TextNode: \'</title>\\n\\n      \'>, <Block Node: style. Contents: [<TextNode: \'\\n        \'>, <Block Node: bootstrap_theme. Contents: [<TextNode: \'\\n          <link rel="sty\'>, <django.templatetags.static.StaticNode object at 0x7f5c390a51d0>, <TextNode: \'"/>\\n          <link rel="\'>, <django.templatetags.static.StaticNode object at 0x7f5c390a5278>, <TextNode: \'"/>\\n        \'>]>, <TextNode: \'\\n\\n        <link rel="styl\'>, <django.templatetags.static.StaticNode object at 0x7f5c390a52e8>, <TextNode: \'"/>\\n        <link rel="st\'>, <django.templatetags.static.StaticNode object at 0x7f5c390a5390>, <TextNode: \'"/>\\n      \'>]>, <TextNode: \'\\n\\n    \'>]>}, {\'block\': <Block Node: title. Contents: [<IfNode>, <TextNode: \'Django REST framework\'>]>}]'
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:02,279] "GET /api/query/?status=done HTTP/1.1" 200 170
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:02,341] "POST /api/api-auth/login/ HTTP/1.1" 200 2973
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,345] (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:32:02.306237+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 32, 2, 306237, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,354] (0.003) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:02,362] "GET /favicon.ico HTTP/1.1" 200 2842
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:02,731] (0.001) INSERT INTO "finder_query" ("query", "status", "author_id") VALUES ('ftjftj', 'create', 2) RETURNING "finder_query"."id"; args=('ftjftj', 'create', 2)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:02,769] "POST /api/query/ HTTP/1.1" 201 45
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:05,281] "GET /static/js/link-detail/link-detail.template.html HTTP/1.1" 200 933
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:05,321] (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:32:05.290125+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 32, 5, 290125, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:05,351] (0.013) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:05,363] "GET /favicon.ico HTTP/1.1" 200 2842
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:05,389] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:32:05.358075+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 32, 5, 358075, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:05,396] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:05,424] (0.001) SELECT "finder_result"."id", "finder_result"."query_id", "finder_result"."url", "finder_result"."spider", "finder_result"."date", "finder_result"."rang" FROM "finder_result" INNER JOIN "finder_query" ON ("finder_result"."query_id" = "finder_query"."id") WHERE "finder_query"."query" = 'ftjftj' ORDER BY "finder_result"."rang" ASC; args=('ftjftj',)
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:05,436] (0.007) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'gr7g9dvb3b47dlozr3o5zjh4radpn9jz' AND "django_session"."expire_date" > '2016-09-30T14:32:05.410017+00:00'::timestamptz); args=('gr7g9dvb3b47dlozr3o5zjh4radpn9jz', datetime.datetime(2016, 9, 30, 14, 32, 5, 410017, tzinfo=<UTC>))
+utils.py [LINE:90]# DEBUG [2016-09-30 17:32:05,441] (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2; args=(2,)
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:05,445] "GET /%7B%7B%20item.url%20%7D%7D HTTP/1.1" 200 2842
+basehttp.py [LINE:131]# INFO [2016-09-30 17:32:05,459] "GET /api/result/?query__query=ftjftj HTTP/1.1" 200 3759
+utils.py [LINE:90]# DEBUG [2016-09-30 17:33:02,109] (0.002) 
+            SELECT c.relname, c.relkind
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=None
+utils.py [LINE:90]# DEBUG [2016-09-30 17:33:02,116] (0.001) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
