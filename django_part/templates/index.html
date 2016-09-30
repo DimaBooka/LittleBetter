@@ -13,41 +13,36 @@
     <script src="/static/js/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/static/js/app.module.js"></script>
     <script src="/static/js/app.config.js"></script>
+    <script src="/static/js/MakeQueryController.js"></script>
     <script src="/static/js/links-list/links-list.component.js"></script>
+    <script src="/static/js/link-detail/filter.js"></script>
     <script src="/static/js/link-detail/link-detail.component.js"></script>
     <script src="/static/js/services/services.module.js"></script>
     <script src="/static/js/services/LinkService/DataService.js"></script>
 
-    <link href="/static/simplebox/simplebox.css" rel="stylesheet">
-    <script type="text/javascript" src="/static/simplebox/simplebox.js"></script>
-    <script type="text/javascript" src="/static/simplebox/simplebox_util.js"></script>
-    <script type="text/javascript" src="/static/simplebox/simple.js"></script>
-
 </head>
 
+ {% verbatim %}
 <body>
    <div class="wrapper">
      <div class="content">
        <div class="navbar navbar-default navbar-fixed-top" style="background-color: #74cfae;">
          <div class="navbar-header" style="margin-left: 10px;">
-           {% load static %}
            <a href="/"><img src="/static/logo.png" alt="" style="width: 50px; height: 50px;"></a>
          </div>
 
          <div ng-controller="MakeQueryCtrl">
-           <form action="">
-             {{form}}
-             <button class="button form_style" ng-click="getlog()">Search</button>
-           </form>
-{% verbatim %}
+
+           <input class="form_style ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern" name="query" ng-model="query" pattern="^[А-Яа-яA-Za-z0-9\s]+$" placeholder="write here" style="margin-left: 5px; width: 400px;" type="search" required>
+           <button class="button form_style" ng-click="mayBeNewQuery()">Search</button>
            <div ng-if="checked">
              <div class="container">
                <div class="row centered mt grid">
                  <h4 class="respan">In process ....</h4>
                  <div id="super_wraper">
-                   <div id="lamp1"><span class="create"></span></div>
-                   <div id="lamp2"><span class="create"></span></div>
-                   <div id="lamp3"><span class="create"></span></div>
+                   <div id="lamp1" ng-if="lamp1"><span class="done"></span></div>
+                   <div id="lamp2" ng-if="lamp2"><span class="done"></span></div>
+                   <div id="lamp3" ng-if="lamp3"><span class="done"></span></div>
                  </div>
                </div>
              </div>
@@ -68,7 +63,7 @@
        </div>
      </div>
    </div>
-{% endverbatim %}
-</body>
 
+</body>
+{% endverbatim %}
 </html>

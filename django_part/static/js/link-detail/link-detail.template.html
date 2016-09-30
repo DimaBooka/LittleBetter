@@ -7,7 +7,7 @@
         <div class="hovergallery">
           <span ng-repeat="item in items | startFrom: startingItem() | limitTo: itemsPerPage">
             <a rel="simplebox" href="{{ item.url }}">
-            <img class="shadow" width="30%" style="object-fit: cover; width:180px; height:180px;" src="{{ item.url }}" alt="{{ item.spider }} {{ item.rang }}"></a>
+            <img class="shadow" style="object-fit: cover; width:180px; height:180px;" src="{{ item.url }}" alt="{{ item.spider }} {{ item.rang }}"></a>
           </span>
         </div>
 

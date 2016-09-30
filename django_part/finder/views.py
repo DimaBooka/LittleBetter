@@ -1,19 +1,11 @@
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .models import Query, Result
-from .forms import QueryForm
-from .errors import RunSpiderError
 import logging
-from .send_email import send_email as ALERT
-
 
 logger = logging.getLogger(__name__)
 
 
 def main(request):
-    form = QueryForm()
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'index.html')
 
 #
 # def start(request):

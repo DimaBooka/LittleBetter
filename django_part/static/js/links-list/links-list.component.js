@@ -5,7 +5,6 @@ angular.
     controller: ['QueryService',
       function linksController(QueryService) {
         this.links = QueryService.query({'status':'done'});
-
       }
     ]
   });
