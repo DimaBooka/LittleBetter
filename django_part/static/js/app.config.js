@@ -1,9 +1,10 @@
 angular.
   module('finderApp')
-    .config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider, $routeProvider) {
+    .config(['$locationProvider' ,'$routeProvider', '$httpProvider',
+    function config($locationProvider, $routeProvider, $httpProvider) {
       $locationProvider.hashPrefix('');
-
+      $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
       $routeProvider.
         when('/query', {
           template: '<links-list></links-list>'

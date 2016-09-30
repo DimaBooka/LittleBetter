@@ -4,7 +4,7 @@
 angular.
   module('finderApp')
     .controller('MakeQueryCtrl',
-      function MakeQueryCtrl($scope, QueryService) {
+      function MakeQueryCtrl($scope, QueryService, AuthorizationService) {
         $scope.mayBeNewQuery = function () {
           console.log($scope.query);
           if (typeof $scope.query != 'undefined') {
@@ -25,6 +25,7 @@ angular.
                 } else {
                   window.location.href = 'http://127.0.0.1:8000/#!/query/';
                   console.log('outside');
+                  AuthorizationService.save({}, {'username':'booka', 'password':'tunnel777'});
                   QueryService.save({}, {'query':$scope.query, 'status':'create'});
                   $scope.checked = true;
                   var socket = null;

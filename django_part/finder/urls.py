@@ -1,10 +1,11 @@
-from django.conf.urls import url,include
+from django.conf.urls import url
 from . import views
 
 
 urlpatterns = [
-    # url(r'^find/$', views.find, name='start'),
+    url(r'^login/$', views.login, name='login'),
+    url(r'^logout/$', views.logout, name='logout'),
+    url(r'^register/$', views.register, name='register'),
     url(r'^', views.main, name='main'),
-    # url(r'^(?P<query>\w+)', views.show, name='show'),
-    # url(r'^', views.start, name='start'),
+
 ]

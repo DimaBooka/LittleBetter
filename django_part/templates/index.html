@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Finder</title>
 
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <link href="/static/css/main.css" rel="stylesheet">
@@ -22,8 +22,10 @@
 
 </head>
 
- {% verbatim %}
+
 <body>
+{% if user.username %}
+   {% verbatim %}
    <div class="wrapper">
      <div class="content">
        <div class="navbar navbar-default navbar-fixed-top" style="background-color: #74cfae;">
@@ -35,7 +37,10 @@
 
            <input class="form_style ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern" name="query" ng-model="query" pattern="^[А-Яа-яA-Za-z0-9\s]+$" placeholder="write here" style="margin-left: 5px; width: 400px;" type="search" required>
            <button class="button form_style" ng-click="mayBeNewQuery()">Search</button>
-           <div ng-if="checked">
+           {% endverbatim %}
+              <a href="{% url 'logout' %}" style="float: right;"><h4>Log Out ({{ user.username }})</h4></a>
+           {% verbatim %}
+           <div ng-if="checked" style="float: right;">
              <div class="container">
                <div class="row centered mt grid">
                  <h4 class="respan">In process ....</h4>
@@ -63,7 +68,27 @@
        </div>
      </div>
    </div>
+   {% endverbatim %}
+{% else %}
 
+   <div class="login">
+     {% if login_error %}
+       <label class="errors">{{ login_error }}</label>
+     {% endif %}
+     <form action="{% url 'login' %}" method="post">
+       {% csrf_token %}
+       <label for="username">Login</label><br>
+       <input class="form_style" type="text" name="username" id="username">
+       <label for="password">Password</label>
+       <input class="form_style" type="password" name="password" id="password">
+       <input class="form_style" type="submit" value="Log in">
+     </form>
+     <form action="{% url 'register' %}" method="post">
+       {% csrf_token %}
+       <button class="form_style" type="submit">Register</button>
+     </form>
+    </div>
+{% endif %}
 </body>
-{% endverbatim %}
+
 </html>

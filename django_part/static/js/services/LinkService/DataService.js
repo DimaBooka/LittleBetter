@@ -13,4 +13,9 @@
         function($resource) {
           return $resource('/api/result/:id', {'id': '@id'}, {});
         }
+     ])
+     .factory('AuthorizationService', ['$resource',
+        function($resource) {
+          return $resource('/api/api-auth/login/', {}, {});
+        }
      ]);

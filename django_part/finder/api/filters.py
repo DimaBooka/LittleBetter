@@ -6,7 +6,7 @@ class QueryFilter(FilterSet):
 
     class Meta:
         model = Query
-        fields = ['query', 'status', ]
+        fields = ['query', 'status', 'author', ]
 
 
 class ResultFilter(FilterSet):
