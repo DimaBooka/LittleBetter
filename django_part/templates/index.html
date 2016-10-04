@@ -19,6 +19,7 @@
     <script src="/static/js/link-detail/link-detail.component.js"></script>
     <script src="/static/js/services/services.module.js"></script>
     <script src="/static/js/services/LinkService/DataService.js"></script>
+    <script src="/static/js/clientPart.js"></script>
 
 </head>
 
@@ -27,15 +28,15 @@
 {% if user.username %}
    {% verbatim %}
    <div class="wrapper">
-     <div class="content">
+     <div class="content" ng-controller="MakeQueryCtrl">
        <div class="navbar navbar-default navbar-fixed-top" style="background-color: #74cfae;">
          <div class="navbar-header" style="margin-left: 10px;">
            <a href="/"><img src="/static/logo.png" alt="" style="width: 50px; height: 50px;"></a>
          </div>
 
-         <div ng-controller="MakeQueryCtrl">
+         <div>
 
-           <input class="form_style ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern" name="query" ng-model="query" pattern="^[А-Яа-яA-Za-z0-9\s]+$" placeholder="write here" style="margin-left: 5px; width: 400px;" type="search" required>
+           <input class="form_style ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern" id="query" name="query" ng-model="query" pattern="^[А-Яа-яA-Za-z0-9\s]+$" placeholder="write here" style="margin-left: 5px; width: 400px;" type="search" required>
            <button class="button form_style" ng-click="mayBeNewQuery()">Search</button>
            {% endverbatim %}
               <a href="{% url 'logout' %}" style="float: right;"><h4>Log Out ({{ user.username }})</h4></a>
@@ -77,15 +78,14 @@
      {% endif %}
      <form action="{% url 'login' %}" method="post">
        {% csrf_token %}
-       <label for="username">Login</label><br>
-       <input class="form_style" type="text" name="username" id="username">
-       <label for="password">Password</label>
-       <input class="form_style" type="password" name="password" id="password">
-       <input class="form_style" type="submit" value="Log in">
+       <h4 style="font-weight: 500;">Login :</h4>
+       <input class="form_style" type="text" name="username" id="username"></label>
+       <label for="password">Password
+       <input class="form_style" type="password" name="password" id="password"></label>
+       <input class="form_style" style="width: 50%;" type="submit" value="Log in">
      </form>
-     <form action="{% url 'register' %}" method="post">
-       {% csrf_token %}
-       <button class="form_style" type="submit">Register</button>
+     <form action="{% url 'register' %}">
+       <button class="form_style" style="width: 50%;" type="submit">Register</button>
      </form>
     </div>
 {% endif %}

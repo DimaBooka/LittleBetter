@@ -52,7 +52,7 @@ class LinksFinderPipeline(object):
                                                                   rang=i, date=func.now())
             con.execute(result)
 
-        update_status = queries.update().where(meta.tables['finder_query'].c.id == query[0]).values(status='done')
+        update_status = queries.update().where(meta.tables['finder_query'].c.id == query[0]).values(status=1)
         con.execute(update_status)
 
         query = hashlib.sha224(item['query'][0]).hexdigest()

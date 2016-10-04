@@ -1,15 +1,29 @@
-from django.shortcuts import render, render_to_response, redirect
+from django.shortcuts import render
 import logging
 from django.template.context_processors import csrf
 from django.shortcuts import render_to_response, redirect
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
+from sendfile import sendfile
+import os
+import time
+import shutil
 
 
+numdays = 86400 * 1
+now = time.time()
+upload_folder = os.path.abspath(os.path.dirname(__file__))
 logger = logging.getLogger(__name__)
 
 
 def main(request):
+    directory = os.path.join(upload_folder[:-6], '/upload/')
+    for r, d, f in os.walk(directory):
+        for dir in d:
+            timestamp = os.path.getmtime(os.path.join(r, dir))
+            if now - numdays > timestamp:
+                logging.info("removing ", os.path.join(r, dir))
+                shutil.rmtree(os.path.join(r, dir))
     return render(request, 'index.html')
 
 
@@ -51,66 +65,6 @@ def register(request):
             args['form'] = newuser_form
     return render_to_response('user/registration.html', args)
 
-#
-# def start(request):
-#     """
-#
-#     Just show all old query for client.
-#
-#     """
-#     form = QueryForm()
-#     return render(request, 'base.html', {'form': form})
-#
-#
-# def find(request):
-#     """
-#
-#     Gets a word-query and runs skrapyd or redirect on url which shows images.
-#
-#     """
-#     links = Query.objects.filter(status='done').values_list('query', flat=True)
-#     if request.method == "POST":
-#         form = QueryForm(request.POST)
-#         if form.is_valid():
-#             query = request.POST.get('query')
-#             logger.info(u'Entered query is OK.')
-#
-#             if query in links:
-#                 return HttpResponseRedirect('/' + query.replace(' ', '_') + '/')
-#
-#             try:
-#                 new_query = Query(query=query, status='create')
-#                 new_query.save()
-#             except RunSpiderError:
-#                 return render(request, 'error.html', {'form': form})
-#         return render(request, 'client.html', {'form': form, 'query': query})
-#
-#
-# def show(request, query):
-#     """
-#     Just shows the images at the word-query.
-#
-#     :param:
-#         query: query-word from client (position);
-#
-#     """
-#     form = QueryForm()
-#     try:
-#         pic = Result.objects.select_related('query').filter(query__query=query.replace('_', ' '),
-#                                                             query__status='done').order_by('rang')
-#         logger.info(u'Successfully processed request.')
-#     except ConnectionRefusedError:
-#         ALERT()
-#         logger.error(u"Couldn't get data from postgresql.")
-#         return render(request, 'error.html', {'form': form})
-#
-#     paginator = Paginator(pic, 24)  # Show 24 contacts per page
-#     page = request.GET.get('page')
-#     try:
-#         pic = paginator.page(page)
-#     except PageNotAnInteger:
-#         pic = paginator.page(1)
-#     except EmptyPage:
-#         pic = paginator.page(paginator.num_pages)
-#
-#     return render(request, 'result.html', {'pic': pic, 'form': form})
+
+def download(request, query):
+    return sendfile(request, upload_folder[:-6] + '/upload/' + query + '/' + query + '.zip')

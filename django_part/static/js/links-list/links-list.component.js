@@ -4,7 +4,7 @@ angular.
     templateUrl: '/static/js/links-list/links-list.template.html',
     controller: ['QueryService',
       function linksController(QueryService) {
-        this.links = QueryService.query({'status':'done'});
+        this.links = QueryService.query({'status':1});
       }
     ]
   });

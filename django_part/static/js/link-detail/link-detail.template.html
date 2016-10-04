@@ -4,18 +4,18 @@
       <h3 style="padding: 20px">SEARCH RESULT</h3>
       <div id="content">
 
-        <div class="hovergallery">
-          <span ng-repeat="item in items | startFrom: startingItem() | limitTo: itemsPerPage">
-            <a rel="simplebox" href="{{ item.url }}">
-            <img class="shadow" style="object-fit: cover; width:180px; height:180px;" src="{{ item.url }}" alt="{{ item.spider }} {{ item.rang }}"></a>
-          </span>
-        </div>
+        <span ng-repeat="item in items | startFrom: startingItem() | limitTo: itemsPerPage">
+          <a rel="simplebox" href="{{ item.url }}">
+          <img class="shadow" style="object-fit: cover; width:180px; height:180px;" src="{{ item.url }}" alt="{{ item.spider }} {{ item.rang }}"></a>
+          <input class="messageCheckbox" type="checkbox" value="{{ item.url }}">
+        </span>
 
         <div id="pagination" class="row">
           <button class="button form_style" ng-disabled="firstPage()" ng-click="pageBack()">Previous</button>
           <span class="respan">{{currentPage+1}} of {{numberOfPages()}}</span>
           <button class="button form_style" ng-disabled="lastPage()" ng-click="pageForward()">Next</button>
         </div>
+        <input  ng-click="makeZip()" class="form_style" type="submit" value="Create Zip File">
 
       </div>
     </div>

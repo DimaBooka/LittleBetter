@@ -6,6 +6,7 @@ import time
 import asyncio_redis
 import logging
 import hashlib
+from tasks import create_zip
 
 
 logging.basicConfig(format=u'%(filename) 8s [LINE:%(lineno)d]# %(levelname)-3s [%(asctime)s] %(message)s',
@@ -38,25 +39,36 @@ class MyServerProtocol(WebSocketServerProtocol):
             # print("Text message received: {0}".format(payload.decode('utf8')))
             print("Text message received: {0}".format(hashlib.sha224(payload).hexdigest()))
 
-            try:
-                connection = yield from asyncio_redis.Connection.create(host='127.0.0.1', port=6379)
-                subscriber = yield from connection.start_subscribe()
-                payload = hashlib.sha224(payload).hexdigest()
-                yield from subscriber.subscribe([payload])
+            payload = payload.decode('utf8').split(',')
+            if payload[0] == 'query':
+                try:
+                    connection = yield from asyncio_redis.Connection.create(host='127.0.0.1', port=6379)
+                    subscriber = yield from connection.start_subscribe()
+                    query = hashlib.sha224(payload[1].encode('utf8')).hexdigest()
+                    yield from subscriber.subscribe([query])
 
-                spiders_done = list()
+                    spiders_done = list()
+                    while True:
+                        reply = yield from subscriber.next_published()
+                        print(reply.value)
+                        if reply.value.startswith(query):
+                            spiders_done.append(reply.value)
+                            self.sendMessage(('query,' + payload[1] + ',' + reply.value).encode('utf-8'))
+                        if len(spiders_done) > 2:
+                            break
+
+                    logging.info(u'Successes query to Redis: %s' % payload)
+                except:
+                    logging.error(u"Could'not connect to Redis.")
+            elif payload[0] == 'zip':
+                logging.info(u'Create zip: %s' % payload[1:])
+                payload[1] = hashlib.sha224(payload[1].encode('utf8')).hexdigest()
+                make = create_zip.delay(payload[1], payload[2:])
                 while True:
-                    reply = yield from subscriber.next_published()
-                    print(reply.value)
-                    if reply.value.startswith(payload):
-                        spiders_done.append(reply.value)
-                        self.sendMessage(reply.value.encode('utf-8'))
-                    if len(spiders_done) > 2:
+                    if make.ready():
                         break
-
-                logging.info(u'Successes query to Redis: %s' % payload)
-            except:
-                logging.error(u"Could'not connect to Redis.")
+                logging.info('Created zip file')
+                self.sendMessage((','.join(payload[:2])).encode('utf-8'))
 
     def onClose(self, wasClean, code, reason):
         print("WebSocket connection closed: {0}".format(reason))

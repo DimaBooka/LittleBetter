@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 class Query(models.Model):
     query = models.CharField(max_length=150, unique=True)
-    status = models.CharField(max_length=50)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.SmallIntegerField()
 
     def __str__(self):
         return "{0} | {1} | {2}".format(self.query, self.status, self.author_id)

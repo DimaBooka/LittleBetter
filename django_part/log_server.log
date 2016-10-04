@@ -1,0 +1,25 @@
+base_events.py [LINE:1148]# ERROR [2016-10-04 14:45:30,661] Task was destroyed but it is pending!
+task: <Task pending coro=<RedisProtocol._reader_coroutine() running at /home/user/PycharmProjects/Exam_task/django_part/.env/lib/python3.5/site-packages/asyncio_redis/protocol.py:941> wait_for=<Future pending cb=[Task._wakeup()]>>
+server.py [LINE:87]# INFO [2016-10-04 14:45:32,500] Autobahn successfully connected to port.
+server.py [LINE:20]# INFO [2016-10-04 14:45:57,289] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 14:45:57,289] WebSocket connection open.
+server.py [LINE:64]# INFO [2016-10-04 14:46:10,936] Create zip: ['%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9%20%D1%8F%D0%B7%D1%8B%D0%BA', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/14582270_785960458173451_1817068674297626624_n.jpg', 'http://img1.stavropolye.tv/dafa6670fe061126bb770583b82ec389.jpg']
+server.py [LINE:70]# INFO [2016-10-04 14:46:11,675] Created zip file
+server.py [LINE:20]# INFO [2016-10-04 14:48:20,574] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 14:48:20,574] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 14:48:41,886] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 14:48:41,887] Redis connection made
+connection.py [LINE:99]# INFO [2016-10-04 14:48:43,135] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 14:48:43,135] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 14:48:47,193] Successes query to Redis: ['query', 'message2']
+server.py [LINE:60]# INFO [2016-10-04 14:48:48,842] Successes query to Redis: ['query', 'message']
+server.py [LINE:64]# INFO [2016-10-04 14:49:11,422] Create zip: ['message', 'http://www.huckleberrybranding.com/wp-content/uploads/2015/02/Message-in-a-bottle-Bottle-Letter-Sea-1080x1920.jpg', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/14449359_656514841175077_8697175377010753536_n.jpg', 'https://lh5.ggpht.com/ncvRjLkmrl0PBa813rI2psA7NQw-Hz8uYp8bPpseKXtbrk8qRkJv3T3fdVICLA8VluM']
+server.py [LINE:70]# INFO [2016-10-04 14:49:13,026] Created zip file
+server.py [LINE:64]# INFO [2016-10-04 14:49:13,087] Create zip: ['message2', 'http://www.komfort.kz/img/article/2758/63_tn3.jpg', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e15/13734259_285212318520080_153520366_n.jpg', 'http://carleton.ca/financialservices/wp-content/uploads/Error-message2.jpg', 'http://andy.or.ke/wp-content/uploads/Message2.jpg']
+server.py [LINE:70]# INFO [2016-10-04 14:49:19,715] Created zip file
+server.py [LINE:64]# INFO [2016-10-04 14:49:19,716] Create zip: ['message2', 'http://www.komfort.kz/img/article/2758/63_tn3.jpg', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e15/13734259_285212318520080_153520366_n.jpg', 'http://carleton.ca/financialservices/wp-content/uploads/Error-message2.jpg', 'http://andy.or.ke/wp-content/uploads/Message2.jpg']
+server.py [LINE:70]# INFO [2016-10-04 14:49:22,606] Created zip file
+server.py [LINE:64]# INFO [2016-10-04 14:49:36,238] Create zip: ['message2', 'http://www.komfort.kz/img/article/2758/63_tn3.jpg', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e15/13734259_285212318520080_153520366_n.jpg', 'http://carleton.ca/financialservices/wp-content/uploads/Error-message2.jpg', 'http://andy.or.ke/wp-content/uploads/Message2.jpg']
+server.py [LINE:70]# INFO [2016-10-04 14:49:38,338] Created zip file
+server.py [LINE:64]# INFO [2016-10-04 14:49:54,102] Create zip: ['message', 'http://www.huckleberrybranding.com/wp-content/uploads/2015/02/Message-in-a-bottle-Bottle-Letter-Sea-1080x1920.jpg', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/14449359_656514841175077_8697175377010753536_n.jpg', 'https://lh5.ggpht.com/ncvRjLkmrl0PBa813rI2psA7NQw-Hz8uYp8bPpseKXtbrk8qRkJv3T3fdVICLA8VluM']
+server.py [LINE:70]# INFO [2016-10-04 14:49:58,589] Created zip file

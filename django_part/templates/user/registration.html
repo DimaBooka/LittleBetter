@@ -10,11 +10,28 @@
 
 </head>
 <body>
+
+
   <div class="login">
     <form action="{% url 'register' %}" method="post">
       {% csrf_token %}
-      {{ form }}
-      <input class="button" type="submit" value="Register">
+      <div class="wrapper_login">
+        <p>
+          <h4>{{ form.username.help_text }}</h4>
+          <h4 style="font-weight: 500;">{{ form.username.label }} :</h4>
+          <h4 class="centre">{{ form.username }}</h4>
+        </p>
+        <p>
+          <h4 style="font-weight: 500;">{{ form.password1.label }} :</h4>
+          <h4 class="centre">{{ form.password1 }}</h4>
+        </p>
+        <p>
+          <h4>{{ form.password2.help_text }}</h4>
+          <h4 style="font-weight: 500;">{{ form.password2.label }} :</h4>
+          <h4 class="centre">{{ form.password2 }}</h4>
+        </p>
+        <input class="button" style="width: 56%;" type="submit" value="Register">
+      </div>
     </form>
   </div>
 </body>
