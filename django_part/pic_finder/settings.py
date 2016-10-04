@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from datetime import timedelta
+import djcelery
+
 import sendfile
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,6 +43,8 @@ INSTALLED_APPS = [
     'finder',
     'rest_framework',
     'rest_framework.authtoken',
+    'djcelery',
+    'kombu.transport.django'
 ]
 
 SCRAPYD_API = 'http://0.0.0.0:6800'
@@ -179,3 +184,21 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SENDFILE_BACKEND = 'sendfile.backends.simple'
+
+# Celery configs
+djcelery.setup_loader()
+
+CELERYBEAT_SCHEDULE = {
+    'clear-zip-files-every-day': {
+        'task': 'finder.tasks.clear_old',
+        'schedule': timedelta(seconds=10),
+    },
+}
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost'
+CELERY_ALWAYS_EAGER = True
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+CELERY_TASK_RESULT_EXPIRES=3600

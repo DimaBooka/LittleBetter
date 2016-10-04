@@ -23,3 +23,92 @@ server.py [LINE:64]# INFO [2016-10-04 14:49:36,238] Create zip: ['message2', 'ht
 server.py [LINE:70]# INFO [2016-10-04 14:49:38,338] Created zip file
 server.py [LINE:64]# INFO [2016-10-04 14:49:54,102] Create zip: ['message', 'http://www.huckleberrybranding.com/wp-content/uploads/2015/02/Message-in-a-bottle-Bottle-Letter-Sea-1080x1920.jpg', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/14449359_656514841175077_8697175377010753536_n.jpg', 'https://lh5.ggpht.com/ncvRjLkmrl0PBa813rI2psA7NQw-Hz8uYp8bPpseKXtbrk8qRkJv3T3fdVICLA8VluM']
 server.py [LINE:70]# INFO [2016-10-04 14:49:58,589] Created zip file
+server.py [LINE:20]# INFO [2016-10-04 14:58:47,175] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 14:58:47,175] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 14:58:52,436] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 14:58:52,437] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 14:58:55,644] Successes query to Redis: ['query', 'aww3']
+server.py [LINE:20]# INFO [2016-10-04 15:00:46,090] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:00:46,090] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 15:00:52,170] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:00:52,171] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:00:55,337] Successes query to Redis: ['query', 'i7']
+server.py [LINE:20]# INFO [2016-10-04 15:01:02,517] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:01:02,517] WebSocket connection open.
+server.py [LINE:20]# INFO [2016-10-04 15:02:20,068] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:02:20,068] WebSocket connection open.
+server.py [LINE:20]# INFO [2016-10-04 15:02:23,861] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:02:23,861] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 15:02:31,125] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:02:31,126] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:02:33,876] Successes query to Redis: ['query', 'sibaino']
+server.py [LINE:20]# INFO [2016-10-04 15:03:39,110] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:03:39,110] WebSocket connection open.
+server.py [LINE:20]# INFO [2016-10-04 15:03:41,000] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:03:41,000] WebSocket connection open.
+server.py [LINE:20]# INFO [2016-10-04 15:04:04,433] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:04:04,433] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 15:04:13,331] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:04:13,331] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:04:17,180] Successes query to Redis: ['query', 'css style']
+server.py [LINE:20]# INFO [2016-10-04 15:04:42,984] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:04:42,984] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 15:05:40,474] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:05:40,474] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:05:43,368] Successes query to Redis: ['query', 'sdfsgfkjldgdff']
+connection.py [LINE:99]# INFO [2016-10-04 15:05:50,454] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:05:50,455] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:05:53,966] Successes query to Redis: ['query', 'ss']
+connection.py [LINE:99]# INFO [2016-10-04 15:06:13,570] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:06:13,571] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:06:17,090] Successes query to Redis: ['query', 'ss2']
+server.py [LINE:20]# INFO [2016-10-04 15:06:20,215] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:06:20,215] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 15:06:23,342] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:06:23,342] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:06:26,511] Successes query to Redis: ['query', 'asdw3']
+connection.py [LINE:99]# INFO [2016-10-04 15:06:36,990] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:06:36,990] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:06:39,845] Successes query to Redis: ['query', 'asdw34']
+server.py [LINE:20]# INFO [2016-10-04 15:08:22,791] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:08:22,791] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 15:08:30,686] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:08:30,687] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:08:33,509] Successes query to Redis: ['query', 'kjawnf']
+connection.py [LINE:99]# INFO [2016-10-04 15:08:42,158] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:08:42,159] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:08:45,188] Successes query to Redis: ['query', 'kjawnf2']
+server.py [LINE:20]# INFO [2016-10-04 15:11:45,056] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:11:45,056] WebSocket connection open.
+server.py [LINE:20]# INFO [2016-10-04 15:11:47,661] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:11:47,662] WebSocket connection open.
+server.py [LINE:20]# INFO [2016-10-04 15:12:27,006] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:12:27,007] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 15:12:30,802] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:12:30,803] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:12:34,585] Successes query to Redis: ['query', '234']
+server.py [LINE:20]# INFO [2016-10-04 15:12:48,587] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:12:48,587] WebSocket connection open.
+connection.py [LINE:99]# INFO [2016-10-04 15:12:51,124] Connecting to redis
+protocol.py [LINE:821]# INFO [2016-10-04 15:12:51,125] Redis connection made
+server.py [LINE:60]# INFO [2016-10-04 15:12:54,569] Successes query to Redis: ['query', '2445']
+server.py [LINE:20]# INFO [2016-10-04 15:14:46,554] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:14:46,554] WebSocket connection open.
+server.py [LINE:20]# INFO [2016-10-04 15:15:22,933] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:15:22,933] WebSocket connection open.
+server.py [LINE:20]# INFO [2016-10-04 15:16:27,034] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 15:16:27,035] WebSocket connection open.
+server.py [LINE:64]# INFO [2016-10-04 15:16:35,950] Create zip: ['2445', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/14374235_1750551655194282_4240945867365810176_n.jpg', 'http://www.sglabs.it/public/SgLabs_Tek_2445_1.JPG', 'http://cjcity.ru/novosti/soft/images/2016/01/psp2445.jpg', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/14482125_343920959282879_307572439246700544_n.jpg']
+server.py [LINE:70]# INFO [2016-10-04 15:16:37,370] Created zip file
+server.py [LINE:89]# INFO [2016-10-04 17:00:07,878] Autobahn successfully connected to port.
+server.py [LINE:20]# INFO [2016-10-04 17:00:13,584] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 17:00:13,585] WebSocket connection open.
+server.py [LINE:66]# INFO [2016-10-04 17:00:18,813] Create zip: ['asgcv', 'https://i.ytimg.com/vi/ALAkC_JHm6Y/maxresdefault.jpg', 'http://2ch-dc.net/v5/src/1417018275778.jpg', 'https://cdn.thingiverse.com/renders/6a/f4/b9/9a/a2/Screen_Shot_2015-05-21_at_11.58.49_AM_preview_featured.jpg']
+server.py [LINE:72]# INFO [2016-10-04 17:00:56,728] Created zip file
+server.py [LINE:20]# INFO [2016-10-04 17:01:52,302] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 17:01:52,302] WebSocket connection open.
+server.py [LINE:66]# INFO [2016-10-04 17:01:57,990] Create zip: ['toyota', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/14582510_1596762990628005_3310051593319088128_n.jpg', 'https://t1-cms-4.images.toyota-europe.com/toyotaone/uaua/8m-hybrids-sold-header_tcm-3046-631408.jpg']
+server.py [LINE:72]# INFO [2016-10-04 17:01:58,560] Created zip file
+server.py [LINE:20]# INFO [2016-10-04 17:04:48,722] Client successes connected.
+server.py [LINE:24]# INFO [2016-10-04 17:04:48,722] WebSocket connection open.
+server.py [LINE:66]# INFO [2016-10-04 17:04:53,539] Create zip: ['toyota', 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/14582510_1596762990628005_3310051593319088128_n.jpg', 'https://t1-cms-4.images.toyota-europe.com/toyotaone/uaua/8m-hybrids-sold-header_tcm-3046-631408.jpg']

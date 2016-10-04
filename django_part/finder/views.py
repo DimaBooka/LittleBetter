@@ -6,24 +6,12 @@ from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from sendfile import sendfile
 import os
-import time
-import shutil
 
 
-numdays = 86400 * 1
-now = time.time()
-upload_folder = os.path.abspath(os.path.dirname(__file__))
 logger = logging.getLogger(__name__)
 
 
 def main(request):
-    directory = os.path.join(upload_folder[:-6], '/upload/')
-    for r, d, f in os.walk(directory):
-        for dir in d:
-            timestamp = os.path.getmtime(os.path.join(r, dir))
-            if now - numdays > timestamp:
-                logging.info("removing ", os.path.join(r, dir))
-                shutil.rmtree(os.path.join(r, dir))
     return render(request, 'index.html')
 
 
@@ -67,4 +55,5 @@ def register(request):
 
 
 def download(request, query):
+    upload_folder = os.path.abspath(os.path.dirname(__file__))
     return sendfile(request, upload_folder[:-6] + '/upload/' + query + '/' + query + '.zip')

@@ -6,7 +6,7 @@ import time
 import asyncio_redis
 import logging
 import hashlib
-from tasks import create_zip
+from finder.tasks import create_zip
 
 
 logging.basicConfig(format=u'%(filename) 8s [LINE:%(lineno)d]# %(levelname)-3s [%(asctime)s] %(message)s',
@@ -60,7 +60,9 @@ class MyServerProtocol(WebSocketServerProtocol):
                     logging.info(u'Successes query to Redis: %s' % payload)
                 except:
                     logging.error(u"Could'not connect to Redis.")
+
             elif payload[0] == 'zip':
+
                 logging.info(u'Create zip: %s' % payload[1:])
                 payload[1] = hashlib.sha224(payload[1].encode('utf8')).hexdigest()
                 make = create_zip.delay(payload[1], payload[2:])

@@ -34,27 +34,25 @@
            <a href="/"><img src="/static/logo.png" alt="" style="width: 50px; height: 50px;"></a>
          </div>
 
-         <div>
-
            <input class="form_style ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern" id="query" name="query" ng-model="query" pattern="^[А-Яа-яA-Za-z0-9\s]+$" placeholder="write here" style="margin-left: 5px; width: 400px;" type="search" required>
            <button class="button form_style" ng-click="mayBeNewQuery()">Search</button>
            {% endverbatim %}
               <a href="{% url 'logout' %}" style="float: right;"><h4>Log Out ({{ user.username }})</h4></a>
            {% verbatim %}
-           <div ng-if="checked" style="float: right;">
+
+           <div ng-if="checked">
              <div class="container">
                <div class="row centered mt grid">
                  <h4 class="respan">In process ....</h4>
                  <div id="super_wraper">
-                   <div id="lamp1" ng-if="lamp1"><span class="done"></span></div>
-                   <div id="lamp2" ng-if="lamp2"><span class="done"></span></div>
-                   <div id="lamp3" ng-if="lamp3"><span class="done"></span></div>
+                   <span id="lamp1"><span class="create"></span></span>
+                   <span id="lamp2"><span class="create"></span></span>
+                   <span id="lamp3"><span class="create"></span></span>
                  </div>
                </div>
              </div>
            </div>
          </div>
-       </div>
 
        <div ng-view></div>
 
