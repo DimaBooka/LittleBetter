@@ -1,20 +1,22 @@
+from celery.task import periodic_task
+from datetime import timedelta
 import logging
-import shutil
 from urllib.request import urlretrieve
 from zipfile import ZipFile
 import os
-import time
-from .celery import app
+from djcelery import celery
+from finder.models import ZipFiles
+import shutil
 
 
 logger = logging.getLogger(__name__)
 
 
-@app.task
+@celery.task
 def create_zip(query, urls):
+    upload_folder = os.path.abspath(os.path.dirname(__file__))[:-7]
     if not os.path.exists('upload/' + query + '/'):
         os.makedirs('upload/' + query + '/')
-
     with ZipFile('upload/' + query + '/' + query + '.zip', 'w') as zip:
         for i in range(0, len(urls)):
             name_file = urls[i].split('/')[-1]
@@ -25,22 +27,14 @@ def create_zip(query, urls):
             urlretrieve(urls[i], 'upload/' + query + '/' + str(i) + format_images)
             zip.write('upload/' + query + '/' + str(i) + format_images)
 
-    return query + 'done'
+    way = ''.join([upload_folder + '/upload/' + query + '/'])
+    ZipFiles.objects.create(way=way, downloaded=False)
+    return query + ' - done'
 
 
-@app.task
+@periodic_task(run_every=timedelta(seconds=1000))
 def clear_old():
-    upload_folder = os.path.abspath(os.path.dirname(__file__))
-    numdays = 1
-    now = time.time()
-    directory = os.path.join(upload_folder, '/upload/')
-    for r, d, f in os.walk(directory):
-        for dir in d:
-            timestamp = os.path.getmtime(os.path.join(r, dir))
-            print(timestamp)
-            if now - numdays > timestamp:
-                try:
-                    shutil.rmtree(os.path.join(r, dir))
-                except:
-                    logging.error('Something goes wrong with removing old zip files!')
-    return 'removed some folders'
+    old_zip_files = ZipFiles.objects.filter(downloaded=True)
+    for old in old_zip_files:
+        shutil.rmtree(old.way)
+    logging.info('May be some old zip files was remove!')

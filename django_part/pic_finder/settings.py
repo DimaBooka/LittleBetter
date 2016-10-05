@@ -13,8 +13,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 from datetime import timedelta
 import djcelery
-
 import sendfile
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,7 +25,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0hv#oymlx6&-t6gc%+9n!g_(9yzb1ik94c&&o0i^o$se^3fc^h'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -41,18 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'finder',
+    'djcelery',
     'rest_framework',
     'rest_framework.authtoken',
-    'djcelery',
-    'kombu.transport.django'
+
 ]
 
 SCRAPYD_API = 'http://0.0.0.0:6800'
 SCRAPY_APP = 'links_finder'
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -188,12 +188,7 @@ SENDFILE_BACKEND = 'sendfile.backends.simple'
 # Celery configs
 djcelery.setup_loader()
 
-CELERYBEAT_SCHEDULE = {
-    'clear-zip-files-every-day': {
-        'task': 'finder.tasks.clear_old',
-        'schedule': timedelta(seconds=10),
-    },
-}
+
 BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost'
 CELERY_ALWAYS_EAGER = True
@@ -201,4 +196,4 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
-CELERY_TASK_RESULT_EXPIRES=3600
+CELERY_TASK_RESULT_EXPIRES = 3600

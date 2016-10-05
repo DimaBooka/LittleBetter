@@ -1,5 +1,9 @@
 from autobahn.asyncio.websocket import WebSocketServerProtocol, \
     WebSocketServerFactory
+try:
+    import asyncio
+except ImportError:
+    import trollius as asyncio
 import redis
 import asyncio
 import time
@@ -76,13 +80,7 @@ class MyServerProtocol(WebSocketServerProtocol):
         print("WebSocket connection closed: {0}".format(reason))
 
 
-if __name__ == '__main__':
-
-    try:
-        import asyncio
-    except ImportError:
-        import trollius as asyncio
-
+def run():
     try:
         factory = WebSocketServerFactory(u"ws://127.0.0.1:9000")
         factory.protocol = MyServerProtocol
@@ -93,7 +91,6 @@ if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     coro = loop.create_server(factory, '0.0.0.0', 9000)
     server = loop.run_until_complete(coro)
-
 
     try:
         loop.run_forever()
