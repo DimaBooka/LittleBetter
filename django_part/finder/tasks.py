@@ -32,9 +32,10 @@ def create_zip(query, urls):
     return query + ' - done'
 
 
-@periodic_task(run_every=timedelta(seconds=1000))
+@periodic_task(run_every=timedelta(seconds=10000))
 def clear_old():
     old_zip_files = ZipFiles.objects.filter(downloaded=True)
     for old in old_zip_files:
         shutil.rmtree(old.way)
+        old.delete()
     logging.info('May be some old zip files was remove!')
